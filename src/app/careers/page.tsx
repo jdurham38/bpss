@@ -7,7 +7,7 @@ const CareersPage: React.FC = () => {
   return (
     <div>
       <h1>Careers Page</h1>
-      <p>Welcome to the Careers Page!</p>
+      <p>Welcome to the Careers Page! please work</p>
     </div>
   );
 };
