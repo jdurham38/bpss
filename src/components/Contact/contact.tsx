@@ -1,3 +1,5 @@
+
+'use client';
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -56,10 +58,10 @@ export default function Contact() {
       return;
     }
     emailjs.send(
-      process.env.REACT_APP_SERVICE_ID || '', // Replace with your EmailJS service ID
-      process.env.REACT_APP_TEMPLATE_ID || '', // Replace with your EmailJS template ID
+      process.env.NEXT_PUBLIC_SERVICE_ID || '', // Replace with your EmailJS service ID
+      process.env.NEXT_PUBLIC_TEMPLATE_ID || '', // Replace with your EmailJS template ID
       formData,
-      process.env.REACT_APP_USER_ID || '' // Replace with your EmailJS user ID
+      process.env.NEXT_PUBLIC_USER_ID || '' // Replace with your EmailJS user ID
     )
     .then(() => {
       setIsSuccess(true);
@@ -123,7 +125,7 @@ export default function Contact() {
           {messageError && <p className={styles.errorMessage}>{messageError}</p>}
         </div>
         <ReCAPTCHA
-          sitekey={process.env.REACT_APP_SITE_KEY || ''} // Replace with your reCAPTCHA site key
+          sitekey={process.env.NEXT_PUBLIC_SITE_KEY || ''} // Replace with your reCAPTCHA site key
           onChange={handleRecaptchaChange}
         />
         <button type="submit">Submit</button>
