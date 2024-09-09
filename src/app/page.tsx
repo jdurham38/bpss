@@ -9,7 +9,7 @@ import Contact from '@/components/Contact/contact';
 export default function Home() {
   return (
     <div>
-      <RedirectButton url="https://www.example.com" label="Go to Example" />
+      <RedirectButton url="https://www.example.com" label="Order Now" />
       <CareersButton />
       <Contact />
     </div>
