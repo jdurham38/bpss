@@ -1,0 +1,98 @@
+.background {
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    max-width: 900px; /* Increase the max-width for a more horizontal layout */
+    margin: 80px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .formRow div {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .formRow div:last-child {
+    margin-right: 0;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+  
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #008d41; /* Italian flag green */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: center; /* Center the button */
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #006633; /* Darker shade of green on hover */
+    color: #fff; /* Ensure text stays white */
+  
+  }
+  
+  .successMessage {
+    color: green;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .errorMessage {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+  }
+  @media (max-width: 768px) {
+    .formRow {
+      flex-direction: column;
+    }
+  
+    .formRow div {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .formRow div:last-child {
+      margin-bottom: 0;
+    }
+  }
