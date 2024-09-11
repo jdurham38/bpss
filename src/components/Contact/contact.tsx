@@ -93,7 +93,7 @@ export default function Contact() {
 
   return (
     <div className={styles.background}>
-      <h2 className={styles.heading}>Leave us a question, comment, or suggestion and we will get back to you ASAP!</h2>  
+      <h2 className={styles.heading}>Leave us a question, comment, or catering request and we will get back to you ASAP!</h2>  
       <h3 className={styles.headingTwo}>Please do not submit orders here. To place an order, click the <b>&quot;Order Now&quot;</b> button above.</h3>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formRow}>
