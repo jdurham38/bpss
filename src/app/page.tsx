@@ -1,17 +1,30 @@
-// src/app/page.tsx or wherever your Home component is
-'use client'; // Required if this component uses any client-side hooks
+'use client';
 
 import React from 'react';
-import CareersButton from '../components/CareersButton/CareersButton'; 
+import CareersButton from '../components/CareersButton/CareersButton';
 import RedirectButton from '@/components/OrderButton/page';
 import Contact from '@/components/Contact/contact';
+import Description from '@/components/Hero/Description/Description';
+import Slideshow from '@/components/Hero/Slideshow/Slideshow';
+import styles from './Home.module.css'; // Import CSS module for styling
 
 export default function Home() {
   return (
-    <div>
-      <RedirectButton url="https://big-pops-sandwich-shop.square.site/?fbclid=IwY2xjawFMQHBleHRuA2FlbQIxMAABHXp9Zlb6LqxdDOAL08rDQAm_8MIFLRo8IzbFSSMcN0GxUp4yQv0T8VCi2g_aem_4kcO-S8Ma9VyNU5jX31hEw" label="Order Now" />
-      <CareersButton />
-      <Contact />
+    <div className={styles.container}>
+
+
+      <div className={styles.descriptionSlideshow}>
+        <Description />
+        <Slideshow />
+      </div>
+
+      <div className={styles.centeredButtons}>
+        <CareersButton />
+      </div>
+
+      <div className={styles.contactSection}>
+        <Contact />
+      </div>
     </div>
   );
 }

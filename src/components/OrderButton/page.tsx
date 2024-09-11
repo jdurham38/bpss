@@ -1,5 +1,5 @@
-// RedirectButton.tsx
 import React from 'react';
+import styles from './RedirectButton.module.css'; // Import CSS module
 
 interface RedirectButtonProps {
   url: string;
@@ -7,26 +7,15 @@ interface RedirectButtonProps {
 }
 
 const RedirectButton: React.FC<RedirectButtonProps> = ({ url, label }) => {
-    const handleClick = () => {
-      window.location.href = url;
-    };
-  
-    return (
-      <button
-        onClick={handleClick}
-        style={{
-          padding: '10px 20px',
-          backgroundColor: '#007BFF',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-        }}
-      >
-        {label}
-      </button>
-    );
+  const handleClick = () => {
+    window.location.href = url;
   };
-  
+
+  return (
+    <button className={styles.redirectButton} onClick={handleClick}>
+      {label}
+    </button>
+  );
+};
 
 export default RedirectButton;

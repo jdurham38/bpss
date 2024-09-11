@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .centeredButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between the buttons */
+    margin-bottom: 40px; /* Add spacing below the buttons */
+  }
+  
+  .descriptionSlideshow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Set a max width for this section */
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  /* For mobile devices, set flex-direction to column */
+@media (max-width: 768px) {
+  .descriptionSlideshow {
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start of the column */
+  }
+}
+  
+  .contactSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  

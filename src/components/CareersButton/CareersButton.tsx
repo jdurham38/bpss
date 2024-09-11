@@ -1,16 +1,20 @@
-// src/components/CareersButton/CareersButton.tsx
 'use client';
 
 import React from 'react';
 import Link from 'next/link';
+import styles from './CareersButton.module.css'; // Import the CSS module
 
 const CareersButton: React.FC = () => {
   return (
-    <Link href="/careers">
-      <button>
-        Go to Careers
-      </button>
-    </Link>
+    <div className={styles.careersContainer}>
+      <h2>Looking to join our team at Manchester, VT or NY?</h2>
+
+      <Link href="/careers">
+        <button className={styles.careersButton}>
+          Go to Careers
+        </button>
+      </Link>
+    </div>
   );
 };
 

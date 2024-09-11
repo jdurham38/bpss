@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getOpenJobPostings } from '@/services/careers';
+import corsMiddleware from '@/lib/corsMiddleware';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  await corsMiddleware(req, res);
   try {
     if (req.method === 'GET') {
       const jobPostings = await getOpenJobPostings();

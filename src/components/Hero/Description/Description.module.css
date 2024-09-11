@@ -1,0 +1,26 @@
+.descriptionBox {
+    background-color: #fff; /* White background for the box */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Space around the content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    border: 2px solid #008d41; /* Green border to match your theme */
+    max-width: 500px; /* Set a maximum width for larger screens */
+    height: 400px; /* Set a fixed height for the carousel */
+    margin: 20px auto; /* Center the box and add space around */
+    text-align: center; /* Center the text */
+  }
+  
+  
+  .locationLink {
+    color: #008d41; /* Green color for the location link */
+    text-decoration: underline;
+  }
+  
+  .locationLink:hover {
+    text-decoration: none;
+  }
+  
+  .buttonWrapper {
+    margin-top: 30px; /* Push the button lower in the layout */
+  }
+  

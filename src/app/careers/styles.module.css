@@ -1,0 +1,158 @@
+/* Container for the job grid */
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Styling for each job box */
+  .jobBox {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .jobBox h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .jobBox p {
+    color: #666;
+    line-height: 1.5;
+  }
+  
+  .jobBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Styling for the apply button */
+  .applyButton {
+    background-color: #008d41;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+  }
+  
+  .applyButton:hover {
+    background-color: #006f33;
+  }
+  
+  /* Pagination container */
+  .paginationContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 20px;
+  }
+  
+  .pageButton, .activePageButton {
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pageButton {
+    background-color: #f9f9f9;
+    color: #555;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .pageButton:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .activePageButton {
+    background-color: #008d41;
+    color: white;
+    border: none;
+    cursor: default;
+  }
+  
+  /* Filter section styling */
+  .filterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .filterLabel {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .input {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .select {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .filterButton {
+    padding: 10px 15px;
+    background-color: #008d41;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .loader {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #555;
+    padding: 50px;
+  }
+  
+
+  .heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Error message styling */
+.errorMessage {
+  color: red;
+  text-align: center;
+  margin: 20px 0;
+}
