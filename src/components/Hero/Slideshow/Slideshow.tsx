@@ -22,8 +22,7 @@ function Slideshow() {
               alt="First slide"
               width={800}
               height={500}
-              objectFit="cover"
-              layout="responsive"
+              style={{ objectFit: 'cover' }}
               priority // Preload the first image for faster display
             />
           </div>
@@ -36,8 +35,7 @@ function Slideshow() {
               alt="Second slide"
               width={800}
               height={500}
-              objectFit="cover"
-              layout="responsive"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </Carousel.Item>
@@ -49,8 +47,7 @@ function Slideshow() {
               alt="Third slide"
               width={800}
               height={500}
-              objectFit="cover"
-              layout="responsive"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </Carousel.Item>
@@ -62,8 +59,7 @@ function Slideshow() {
               alt="Fourth slide"
               width={800}
               height={500}
-              objectFit="cover"
-              layout="responsive"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </Carousel.Item>
@@ -75,8 +71,7 @@ function Slideshow() {
               alt="Fifth slide"
               width={800}
               height={500}
-              objectFit="cover"
-              layout="responsive"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </Carousel.Item>
@@ -88,8 +83,7 @@ function Slideshow() {
               alt="Sixth slide"
               width={800}
               height={500}
-              objectFit="cover"
-              layout="responsive"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </Carousel.Item>
