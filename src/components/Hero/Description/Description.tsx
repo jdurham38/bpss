@@ -13,13 +13,14 @@ const Description: React.FC = () => {
       <p>
         Located at{' '}
         <a 
-          href="https://www.google.com/maps/search/?api=1&query=4367+Main+Street+Manchester+VT" 
+          href="https://www.google.com/maps/search/?api=1&query=4365+Main+Street+Manchester+VT" 
           target="_blank" 
           rel="noopener noreferrer"
           className={styles.locationLink}
         >
-          4367 Main Street, Manchester, VT
+          4365 Main Street, Manchester, VT
         </a>.
+  
       </p>
       <div className={styles.buttonWrapper}>
         <RedirectButton 

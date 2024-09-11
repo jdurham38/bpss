@@ -1,28 +1,29 @@
 /* Full-screen overlay */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  /* Container for the form */
-  .formContainer {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 500px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden; /* Prevent scrolling within the overlay itself */
+}
+
+/* Container for the form */
+.formContainer {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-height: 90vh;
+  overflow-y: auto; /* Allow form content to scroll */
+  position: relative;
+}
+
   /* Close button */
   .closeButton {
     position: absolute;
@@ -75,3 +76,7 @@
     margin-top: 10px;
   }
   
+  /* Disable body scroll when overlay is active */
+body.no-scroll {
+  overflow: hidden;
+}

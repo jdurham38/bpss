@@ -1,0 +1,5 @@
+/* Add this to your global CSS */
+body.no-scroll {
+    overflow: hidden;
+  }
+  

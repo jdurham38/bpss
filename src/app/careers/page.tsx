@@ -7,6 +7,7 @@ import ApplyForm from '@/components/ApplyForm/ApplyForm';
 
 interface JobPosting {
   id: number;
+  num_applicants: number;
   job_title: string;
   description: string; // This contains rich text HTML from ReactQuill
   location: string;

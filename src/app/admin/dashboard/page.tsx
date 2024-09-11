@@ -21,9 +21,12 @@ export default function AdminDashboard() {
   const [success, setSuccess] = useState<string | null>(null);
   const [openJobs, setOpenJobs] = useState<any[]>([]);
   const [closedJobs, setClosedJobs] = useState<any[]>([]);
+  const [loadingUser, setLoadingUser] = useState(true);
+  const [loadingJobs, setLoadingJobs] = useState(true);
 
   useEffect(() => {
     const checkUser = async () => {
+      setLoadingUser(true); // Start loading for user check
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         setUser(null);
@@ -31,6 +34,7 @@ export default function AdminDashboard() {
         setUser(user);
         fetchJobPostings(); // Fetch job postings when the user is authenticated
       }
+      setLoadingUser(false); // Stop loading after check
     };
 
     checkUser();
@@ -38,6 +42,7 @@ export default function AdminDashboard() {
 
   // Fetch job postings
   const fetchJobPostings = async () => {
+    setLoadingJobs(true); // Start loading for job postings
     const { data: jobs, error } = await supabase.from('jobapplications').select('*');
     
     if (error) {
@@ -48,9 +53,9 @@ export default function AdminDashboard() {
       setOpenJobs(openJobs);
       setClosedJobs(closedJobs);
     }
+    setLoadingJobs(false); // Stop loading after fetching jobs
   };
 
-  // Handle form submission (Create or Edit)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -96,7 +101,6 @@ export default function AdminDashboard() {
     }
   };
 
-  // Handle deleting a job
   const handleDelete = async (jobId: number) => {
     const { data, error } = await supabase.from('jobapplications').delete().eq('id', jobId);
     if (error) {
@@ -107,7 +111,6 @@ export default function AdminDashboard() {
     }
   };
 
-  // Handle editing a job
   const handleEdit = (job: any) => {
     setEditMode(true);
     setEditingJobId(job.id);
@@ -131,7 +134,21 @@ export default function AdminDashboard() {
     }
   };
 
-  // Reset form after creating/updating job posting
+  // Handle opening a closed job (set is_open to true)
+  const handleOpenJob = async (jobId: number) => {
+    const { data, error } = await supabase
+      .from('jobapplications')
+      .update({ is_open: true })
+      .eq('id', jobId);
+
+    if (error) {
+      setError('Failed to open job posting: ' + error.message);
+    } else {
+      setSuccess('Job opened successfully!');
+      fetchJobPostings();
+    }
+  };
+
   const resetForm = () => {
     setJobTitle('');
     setLocation('');
@@ -142,7 +159,9 @@ export default function AdminDashboard() {
 
   return (
     <div className={styles.dashboard}>
-      {user ? (
+      {loadingUser ? (
+        <p className={styles.paragraph}>Loading...</p>
+      ) : user ? (
         <div className={styles.container}>
           <h1 className={styles.headingPrimary}>Welcome, {user.email}</h1>
           <p className={styles.paragraph}>Create, edit, or delete job postings below:</p>
@@ -199,27 +218,56 @@ export default function AdminDashboard() {
           {success && <p className={styles.successMessage}>{success}</p>}
 
           <h2 className={styles.headingSecondary}>Open Job Postings</h2>
-          <ul className={styles.jobList}>
-            {openJobs.map((job) => (
-              <li key={job.id} className={styles.jobListItem}>
-                {job.job_title} - {job.location}
-                <button className={styles.editButton} onClick={() => handleEdit(job)}>Edit</button>
-                <button className={styles.deleteButton} onClick={() => handleDelete(job.id)}>Delete</button>
-                <button className={styles.closeButton} onClick={() => handleCloseJob(job.id)}>Close Job</button>
-              </li>
-            ))}
-          </ul>
+          {loadingJobs ? (
+            <p className={styles.paragraph}>Loading job postings...</p>
+          ) : (
+            <ul className={styles.jobList}>
+              {openJobs.map((job) => (
+                <li key={job.id} className={styles.jobListItem}>
+                  <div className={styles.jobInfo}>
+                    <h3>{job.job_title}</h3>
+                    <p>{job.location}</p>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: job.description }}
+                      className={styles.description}
+                    />
+                    <p><strong>Applicants:</strong> {job.num_applicants}</p>
+                  </div>
+                  <div className={styles.jobActions}>
+                    <button className={styles.editButton} onClick={() => handleEdit(job)}>Edit</button>
+                    <button className={styles.deleteButton} onClick={() => handleDelete(job.id)}>Delete</button>
+                    <button className={styles.closeButton} onClick={() => handleCloseJob(job.id)}>Close Job</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <h2 className={styles.headingSecondary}>Closed Job Postings</h2>
-          <ul className={styles.jobList}>
-            {closedJobs.map((job) => (
-              <li key={job.id} className={styles.jobListItem}>
-                {job.job_title} - {job.location}
-                <button className={styles.editButton} onClick={() => handleEdit(job)}>Edit</button>
-                <button className={styles.deleteButton} onClick={() => handleDelete(job.id)}>Delete</button>
-              </li>
-            ))}
-          </ul>
+          {loadingJobs ? (
+            <p className={styles.paragraph}>Loading job postings...</p>
+          ) : (
+            <ul className={styles.jobList}>
+              {closedJobs.map((job) => (
+                <li key={job.id} className={styles.jobListItem}>
+                  <div className={styles.jobInfo}>
+                    <h3>{job.job_title}</h3>
+                    <p>{job.location}</p>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: job.description }}
+                      className={styles.description}
+                    />
+                    <p><strong>Applicants:</strong> {job.num_applicants}</p>
+                  </div>
+                  <div className={styles.jobActions}>
+                    <button className={styles.editButton} onClick={() => handleEdit(job)}>Edit</button>
+                    <button className={styles.deleteButton} onClick={() => handleDelete(job.id)}>Delete</button>
+                    <button className={styles.openButton} onClick={() => handleOpenJob(job.id)}>Open Job</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       ) : (
         <p className={styles.paragraph}>

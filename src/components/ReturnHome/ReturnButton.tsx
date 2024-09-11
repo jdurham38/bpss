@@ -1,18 +1,15 @@
-// src/components/ReturnButton/ReturnButton.tsx
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import styles from './ReturnButton.module.css'; // Import custom CSS for styling
 
 const ReturnButton: React.FC = () => {
-
-
   return (
     <Link href="/">
-    <button style={{ padding: '10px', marginTop: '20px', cursor: 'pointer' }}>
-      Return to Home
-    </button>
+      <button className={styles.returnButton}>
+        Return to Home
+      </button>
     </Link>
   );
 };

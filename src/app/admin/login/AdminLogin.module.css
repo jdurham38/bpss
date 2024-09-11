@@ -1,0 +1,75 @@
+/* Main container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+  }
+  
+  /* Login box */
+  .loginBox {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Heading */
+  .heading {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Form group (label and input) */
+  .formGroup {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  /* Label styling */
+  .formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Input field styling */
+  .inputField {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+  }
+  
+  /* Error message */
+  .errorMessage {
+    color: red;
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  /* Submit button */
+  .submitButton {
+    width: 100%;
+    padding: 12px;
+    background-color: #008d41;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitButton:hover {
+    background-color: #006b31;
+  }
+  
