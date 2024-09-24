@@ -22,9 +22,27 @@ const CareersPage: React.FC = () => {
   const [loading, setLoading] = useState(true); // Loading state for spinner
   const [locationFilter, setLocationFilter] = useState(''); // For dropdown
   const [dateFilter, setDateFilter] = useState('all');
-  
+  const [showDescriptionModal, setShowDescriptionModal] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<string>('');
+
   const [currentPage, setCurrentPage] = useState(1);
   const jobsPerPage = 9;
+
+  useEffect(() => {
+    if (showDescriptionModal) {
+      // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Re-enable background scrolling
+      document.body.style.overflow = 'auto';
+    }
+  
+    // Clean up when the component unmounts
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [showDescriptionModal]);
+  
 
   useEffect(() => {
     const fetchJobPostings = async () => {
@@ -83,6 +101,17 @@ const CareersPage: React.FC = () => {
     setSelectedJob(null); // Close the overlay form
   };
 
+  const handleReadMoreClick = (description: string) => {
+    setModalContent(description);
+    setShowDescriptionModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowDescriptionModal(false);
+    setModalContent('');
+  };
+
+
   // Pagination logic
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
@@ -92,11 +121,14 @@ const CareersPage: React.FC = () => {
 
   return (
     <div>
+      <p className={styles.coreValues}>
+        At Big Pop&#39;s, we embody our Core Values of Community, Quality, Respect, Authenticity, and Fun in everything we do, bringing our shared commitment and passion to every experience.
+      </p>
       <ReturnButton />
       <h1 className={styles.heading}>Careers</h1>
-
+  
       {error && <p className={styles.errorMessage}>{error}</p>}
-
+  
       {/* Filters */}
       <div className={styles.filterContainer}>
         <label>
@@ -111,7 +143,7 @@ const CareersPage: React.FC = () => {
             <option value="vt">VT</option>
           </select>
         </label>
-
+  
         <label>
           Date Posted:
           <select
@@ -125,26 +157,36 @@ const CareersPage: React.FC = () => {
             <option value="2weeks">Last 2 weeks</option>
           </select>
         </label>
-
+  
         <button onClick={handleFilterChange} className={styles.filterButton}>
           Apply Filters
         </button>
       </div>
-
+  
       {/* Show loading animation while fetching data */}
       {loading && <div className={styles.loader}>Loading...</div>}
-
-      {/* Job Listings in a 3x3 grid */}
+  
+      {/* Job Listings in a grid */}
       {!loading && filteredJobPostings.length > 0 ? (
         <div className={styles.gridContainer}>
           {currentJobs.map((job) => (
             <div key={job.id} className={styles.jobBox}>
               <h3>{job.job_title}</h3>
-              {/* Use dangerouslySetInnerHTML to render the rich text (HTML) */}
-              <div
-                className={styles.text}
-                dangerouslySetInnerHTML={{ __html: job.description }}
-              />
+              {/* Job description with conditional "Read More" */}
+              <div className={styles.jobDescription}>
+                <div
+                  dangerouslySetInnerHTML={{ __html: job.description }}
+                />
+              </div>
+              {/* Check if the description is longer than a certain length */}
+              {job.description.length > 200 && (
+                <button
+                  className={styles.readMoreButton}
+                  onClick={() => handleReadMoreClick(job.description)}
+                >
+                  Read More
+                </button>
+              )}
               <p className={styles.text}><strong>Location:</strong> {job.location}</p>
               <p className={styles.text}><strong>Date Posted:</strong> {new Date(job.created_at).toLocaleDateString()}</p>
               <button className={styles.applyButton} onClick={() => handleApplyClick(job)}>
@@ -156,26 +198,55 @@ const CareersPage: React.FC = () => {
       ) : (
         !loading && <p className={styles.text}>No open job postings available.</p>
       )}
-
-      {selectedJob && (
-        <ApplyForm job={selectedJob} onClose={handleCloseForm} />
+  
+      {/* Modal Overlay for Full Description */}
+      {showDescriptionModal && (
+        <div className={styles.modalOverlay} onClick={handleCloseModal}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className={styles.closeModalButton}
+              onClick={handleCloseModal}
+            >
+              &times;
+            </button>
+            <div dangerouslySetInnerHTML={{ __html: modalContent }} />
+          </div>
+        </div>
       )}
-
+  
+      {selectedJob && <ApplyForm job={selectedJob} onClose={handleCloseForm} />}
+  
+      {/* Pagination */}
       {filteredJobPostings.length > jobsPerPage && (
         <div className={styles.paginationContainer}>
-          {Array.from({ length: Math.ceil(filteredJobPostings.length / jobsPerPage) }, (_, i) => (
-            <button
-              key={i + 1}
-              onClick={() => paginate(i + 1)}
-              className={i + 1 === currentPage ? styles.activePageButton : styles.pageButton}
-            >
-              {i + 1}
-            </button>
-          ))}
+          {Array.from(
+            {
+              length: Math.ceil(
+                filteredJobPostings.length / jobsPerPage
+              ),
+            },
+            (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => paginate(i + 1)}
+                className={
+                  i + 1 === currentPage
+                    ? styles.activePageButton
+                    : styles.pageButton
+                }
+              >
+                {i + 1}
+              </button>
+            )
+          )}
         </div>
       )}
     </div>
   );
+  
 };
 
 export default CareersPage;

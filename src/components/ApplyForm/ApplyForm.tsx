@@ -106,8 +106,6 @@ const ApplyForm: React.FC<ApplyFormProps> = ({ job, onClose }) => {
         <h2>Apply for {job.job_title}</h2>
         <p><strong>Location:</strong> {job.location}</p>
         <p><strong>Date Posted:</strong> {new Date(job.created_at).toLocaleDateString()}</p>
-        <p><strong>Job Description:</strong></p>
-        <p>{stripHtmlTags(job.description)}</p> {/* Display stripped description */}
 
         <form ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data">
           <input type="hidden" name="job_title" value={job.job_title} />
