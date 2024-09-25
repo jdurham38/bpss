@@ -8,6 +8,8 @@ import Description from '@/components/Hero/Description/Description';
 import Slideshow from '@/components/Hero/Slideshow/Slideshow';
 import styles from './Home.module.css'; // Import CSS module for styling
 
+
+
 export default function Home() {
   return (
     <div className={styles.container}>

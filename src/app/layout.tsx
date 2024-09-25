@@ -14,8 +14,10 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Big Pops Sandwich Shop",
-};
+  title: 'Big Pops Sandwich Shop',
+  description: 'Best sandwiches in all of Vermont',
+  keywords: ['sandwhich', 'cheap', 'good', 'homeade', 'fresh'],};
+
 
 export default function RootLayout({
   children,
