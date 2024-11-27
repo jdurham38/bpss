@@ -143,20 +143,7 @@ const CareersPage: React.FC = () => {
             <option value="vt">VT</option>
           </select>
         </label>
-  
-        <label>
-          Date Posted:
-          <select
-            value={dateFilter}
-            onChange={(e) => setDateFilter(e.target.value)}
-            className={styles.select}
-          >
-            <option value="all">All Time</option>
-            <option value="24hours">Last 24 hours</option>
-            <option value="1week">Last 1 week</option>
-            <option value="2weeks">Last 2 weeks</option>
-          </select>
-        </label>
+
   
         <button onClick={handleFilterChange} className={styles.filterButton}>
           Apply Filters
