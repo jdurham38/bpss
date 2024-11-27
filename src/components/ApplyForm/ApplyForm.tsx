@@ -21,11 +21,17 @@ const ApplyForm: React.FC<ApplyFormProps> = ({ job, onClose }) => {
   const formRef = useRef<HTMLFormElement | null>(null); // Use ref for the form
 
   useEffect(() => {
+    const scrollPosition = window.scrollY; // Capture current scroll position
     document.body.classList.add('no-scroll');
+    document.body.style.top = `-${scrollPosition}px`; // Freeze scroll position
+  
     return () => {
       document.body.classList.remove('no-scroll');
+      document.body.style.top = ''; // Remove top style
+      window.scrollTo(0, scrollPosition); // Restore scroll position
     };
   }, []);
+  
 
   const handleFileValidation = (file: File | null) => {
     if (!file) return false;

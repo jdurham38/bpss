@@ -1,26 +1,67 @@
 .descriptionBox {
-    background-color: #fff; /* White background for the box */
-    border-radius: 15px; /* Rounded corners */
-    padding: 20px; /* Space around the content */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-    border: 2px solid #008d41; /* Green border to match your theme */
-    max-width: 500px; /* Set a maximum width for larger screens */
-    height: 400px; /* Set a fixed height for the carousel */
-    margin: 20px auto; /* Center the box and add space around */
-    text-align: center; /* Center the text */
+  background-color: #faedcd;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #7e945b;
+  max-width: 700px;
+  margin: 20px auto;
+  max-height: 700px; /* Set a fixed height for the carousel */
+  min-height: 385px;;
+}
+
+.locationLink {
+  color: #008d41;
+  text-decoration: underline;
+}
+
+.locationLink:hover {
+  text-decoration: none;
+}
+
+.buttonWrapper {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.imageContainer {
+  flex-shrink: 0;
+}
+
+.logoImage {
+  border-radius: 50%;
+}
+
+.textContainer {
+  flex: 1;
+}
+
+/* Media query for screens smaller than 1000px */
+@media (max-width: 1000px) {
+  .flexContainer {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align stacked items */
   }
-  
-  
-  .locationLink {
-    color: #008d41; /* Green color for the location link */
-    text-decoration: underline;
+
+  .textContainer {
+    text-align: center; /* Center text when stacked */
   }
-  
-  .locationLink:hover {
-    text-decoration: none;
-  }
-  
+
   .buttonWrapper {
-    margin-top: 30px; /* Push the button lower in the layout */
+    margin-top: 20px;
+    width: 100%; /* Ensure the button takes full width of the container */
+    display: flex;
+    justify-content: center;
   }
-  
+
+  .logoImage {
+    margin-bottom: 10px; /* Add spacing below the logo */
+  }
+}

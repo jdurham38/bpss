@@ -1,4 +1,3 @@
-'use client';
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import styles from './index.module.css';
@@ -14,91 +13,103 @@ export default function Contact() {
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
   const [emailError, setEmailError] = useState('');
   const [messageError, setMessageError] = useState('');
-  const [recaptchaValue, setRecaptchaValue] = useState('');
   const [isConfirmed, setIsConfirmed] = useState(false); // State for checkbox
+  const [isFormValid, setIsFormValid] = useState(false); // Tracks form validity
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-
-    if (name === 'email') {
-      validateEmail(value);
-    }
-
-    if (name === 'message') {
-      validateMessage(value);
-    }
+    const updatedFormData = { ...formData, [name]: value };
+    setFormData(updatedFormData);
+  
+    // Validate and check form validity
+    if (name === 'email') validateEmail(value);
+    checkFormValidity(updatedFormData, isConfirmed);
   };
-
-  const validateEmail = (email: string) => {
+  
+  
+  const handleCheckboxChange = () => {
+    const updatedConfirmed = !isConfirmed; // Toggle checkbox state
+    setIsConfirmed(updatedConfirmed);
+    checkFormValidity(formData, updatedConfirmed); // Recheck validity
+  };
+  
+  const validateEmail = (email: string): boolean => {
     const regex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|live|aol|icloud|mail|protonmail|zoho|yandex|gmx)\.(com|edu|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)$/;
-    if (!regex.test(email)) {
-      setEmailError('Please enter a valid email address with a valid provider and domain extension.');
-    } else {
-      setEmailError('');
-    }
+    const isValid = regex.test(email);
+    setEmailError(isValid ? '' : 'Please enter a valid email address.');
+    return isValid;
   };
+  
 
   const validateMessage = (message: string) => {
-    if (message.length > 500) {
-      setMessageError('Message cannot exceed 500 characters.');
-    } else {
-      setMessageError('');
-    }
+    setMessageError(message.length > 500 ? 'Message cannot exceed 500 characters.' : '');
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+const checkFormValidity = (data: typeof formData, confirmed: boolean) => {
+  const isEmailValid = validateEmail(data.email); // Validate email here
+  const isMessageValid = data.message.trim().length <= 500; // Check message length
+
+  const isFormComplete =
+    data.name.trim() !== '' &&
+    data.email.trim() !== '' &&
+    isEmailValid && // Use immediate validation result
+    data.message.trim() !== '' &&
+    isMessageValid && // Ensure message is valid
+    confirmed;
+
+  setIsFormValid(isFormComplete);
+};
+
+  
+
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (emailError || messageError || !isConfirmed) {
-      setStatusMessage('Please fix the errors and confirm the checkbox before submitting.');
+    if (!isFormValid) {
+      setStatusMessage('Please fill out all required fields correctly.');
       setIsSuccess(false);
       return;
     }
 
     const templateParams = {
-      name: formData.name,        // Passed to {{name}}
-      email: formData.email,      // Passed to {{email}}
-      message: formData.message,  // Passed to {{message}}
-      subject: formData.subject   // Passed to {{subject}}
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      subject: formData.subject
     };
-    emailjs.send(
-      process.env.NEXT_PUBLIC_SERVICE_ID || '', 
-      process.env.NEXT_PUBLIC_TEMPLATE_ID || '', 
-      templateParams, // Pass the subject to EmailJS template
-      process.env.NEXT_PUBLIC_USER_ID || ''
-    )
-    .then(() => {
-      setIsSuccess(true);
-      setStatusMessage('Message sent successfully!');
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-        subject: 'General Inquiry' // Reset subject to default
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_TEMPLATE_ID || '',
+        templateParams,
+        process.env.NEXT_PUBLIC_USER_ID || ''
+      )
+      .then(() => {
+        setIsSuccess(true);
+        setStatusMessage('Message sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+          subject: 'General Inquiry'
+        });
+        setIsConfirmed(false);
+      })
+      .catch(() => {
+        setIsSuccess(false);
+        setStatusMessage('Failed to send message.');
       });
-      setIsConfirmed(false);
-    }, () => {
-      setIsSuccess(false);
-      setStatusMessage('Failed to send message.');
-    });
-  };
-
-
-  const handleCheckboxChange = () => {
-    setIsConfirmed(!isConfirmed); // Toggle checkbox state
   };
 
   return (
     <div className={styles.background}>
-      <h2 className={styles.heading}>Leave us a question, comment, or catering request and we will get back to you ASAP!</h2>  
-      <h3 className={styles.headingTwo}>Please do not submit orders here. To place an order, click the <b>&quot;Order Now&quot;</b> button above.</h3>
+      <h2 className={styles.heading}>Leave us a question, comment, or catering request and we will get back to you ASAP!</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formRow}>
           <div>
-            <label className={styles.labels} htmlFor="name">Name</label>
+            <label className={styles.labels} htmlFor="name">
+              Name <span className={styles.asterisk}>*</span>
+            </label>
             <input
               type="text"
               id="name"
@@ -110,7 +121,9 @@ export default function Contact() {
             />
           </div>
           <div>
-            <label className={styles.labels} htmlFor="email">Email</label>
+            <label className={styles.labels} htmlFor="email">
+              Email <span className={styles.asterisk}>*</span>
+            </label>
             <input
               type="email"
               id="email"
@@ -120,11 +133,13 @@ export default function Contact() {
               required
               className={styles.input}
             />
-            {emailError && <p className={styles.errorMessage}>{emailError}</p>}
+            {emailError && <p className={styles.successMessage}>{emailError}</p>}
           </div>
         </div>
         <div>
-          <label className={styles.labels} htmlFor="subject">Subject</label>
+          <label className={styles.labels} htmlFor="subject">
+            Subject <span className={styles.asterisk}>*</span>
+          </label>
           <select
             id="subject"
             name="subject"
@@ -139,7 +154,9 @@ export default function Contact() {
           </select>
         </div>
         <div>
-          <label className={styles.labels} htmlFor="message">Message</label>
+          <label className={styles.labels} htmlFor="message">
+            Message <span className={styles.asterisk}>*</span>
+          </label>
           <textarea
             id="message"
             name="message"
@@ -160,11 +177,14 @@ export default function Contact() {
             onChange={handleCheckboxChange}
             className={styles.checkbox}
           />
-          <label htmlFor="confirm" className={styles.checkboxLabel}>
-            I understand this is not an order submission form.
-          </label>
+        <label htmlFor="confirm" className={styles.checkboxLabel}>
+          I understand this is <u>NOT</u> an order submission form.
+        </label>
+
         </div>
-        <button type="submit" className={styles.button} disabled={!isConfirmed}>Submit</button>
+        <button type="submit" className={styles.button} disabled={!isFormValid}>
+          Submit
+        </button>
       </form>
       {statusMessage && (
         <p className={isSuccess ? styles.successMessage : styles.errorMessage}>

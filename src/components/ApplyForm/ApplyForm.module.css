@@ -10,7 +10,8 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  overflow: hidden; /* Prevent scrolling within the overlay itself */
+  overflow: hidden; /* Prevent scrolling within the overlay */
+  overscroll-behavior: none; /* Prevent elastic scrolling on mobile */
 }
 
 /* Container for the form */
@@ -31,8 +32,9 @@
     right: 10px;
     background-color: transparent;
     border: none;
-    font-size: 20px;
+    font-size: 2rem;
     cursor: pointer;
+    color:red;
   }
   
   /* Form Group Styling */
@@ -54,15 +56,21 @@
   
   /* Submit Button Styling */
   .submitButton {
-    background-color: #008d41;
+    background-color: #7e945b;
     color: white;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
   }
   
+  .submitButton:hover {
+    background-color: #ccd5ae; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    color: black;
+    font-weight: bold;
+  }
   /* Success and Error Messages */
   .successMessage {
     color: green;

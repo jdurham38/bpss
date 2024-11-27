@@ -1,4 +1,8 @@
 /* Container for the job grid */
+.background{
+  background-color: #faf5e6;
+}
+
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -11,7 +15,7 @@
 
 /* Job box styling with fixed dimensions */
 .jobBox {
-  background-color: #fff;
+  background-color: #faedcd;
   border: 1px solid #e0e0e0;
   padding: 20px;
   border-radius: 12px;
@@ -41,17 +45,18 @@
   -webkit-line-clamp: 6; /* Show only 6 lines */
   -webkit-box-orient: vertical;
   margin-bottom: 10px;
+  color: #333;
 }
 
 .jobBox p {
-  color: #666;
+  color: #000000;
   line-height: 1.5;
 }
 
 /* Read More button styling */
 .readMoreButton {
   background-color: transparent;
-  color: #008d41;
+  color: #7e945b;
   border: none;
   padding: 0;
   cursor: pointer;
@@ -68,7 +73,7 @@
 
 /* Apply button adjustments */
 .applyButton {
-  background-color: #008d41;
+  background-color: #7e945b;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -81,7 +86,10 @@
 }
 
 .applyButton:hover {
-  background-color: #006f33;
+  background-color: #ccd5ae; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  color: black;
+  font-weight: bold;
 }
 
 /* Pagination container */
@@ -101,18 +109,21 @@
 }
 
 .pageButton {
-  background-color: #f9f9f9;
+  background-color: #7e945b;
   color: #555;
   border: 1px solid #ddd;
   cursor: pointer;
 }
 
 .pageButton:hover {
-  background-color: #e0e0e0;
+  background-color: #ccd5ae; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  color: black;
+  font-weight: bold;
 }
 
 .activePageButton {
-  background-color: #008d41;
+  background-color: #7e945b;
   color: white;
   border: none;
   cursor: default;
@@ -126,7 +137,7 @@
   margin-bottom: 20px;
   gap: 20px;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #faedcd;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
@@ -154,7 +165,7 @@
 
 .filterButton {
   padding: 10px 15px;
-  background-color: #008d41;
+  background-color: #7e945b;
   color: white;
   border: none;
   cursor: pointer;
@@ -181,7 +192,7 @@
   font-size: 1.2rem;
   font-weight: 500;
   color: #333;
-  background-color: #f9f9f9;
+  background-color: #faedcd;
   padding: 10px 20px;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -227,7 +238,8 @@
   top: 10px;
   right: 15px;
   background-color: transparent;
+  color: red;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
 }

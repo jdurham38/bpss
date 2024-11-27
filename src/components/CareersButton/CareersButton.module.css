@@ -1,16 +1,16 @@
 .careersContainer {
-    background-color: #f9f9f9; /* Light background for the container */
+    background-color: #faedcd; /* Light background for the container */
     border-radius: 15px; /* Rounded corners */
     padding: 30px; /* Padding inside the container */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border: 2px solid #008d41; /* Green border */
+    border: 2px solid #7e945b; /* Green border */
     max-width: 600px; /* Limit the width of the container */
     margin: 20px auto; /* Center the container */
     text-align: center; /* Center-align the text and button */
   }
   
   .careersButton {
-    background-color: #008d41; /* Green background */
+    background-color: #7e945b; /* Green background */
     color: #fff; /* White text color */
     border: none; /* Remove default borders */
     padding: 10px 20px; /* Padding inside the button */
@@ -22,8 +22,10 @@
   }
   
   .careersButton:hover {
-    background-color: #006b31; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
+    background-color: #ccd5ae; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    color: black;
+    font-weight: bold;
   }
   
   .careersButton:active {

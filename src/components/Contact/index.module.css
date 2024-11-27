@@ -1,6 +1,6 @@
 .background {
   padding: 40px;
-  background-color: #fff;
+  background-color: #faedcd;
   border-radius: 15px;
   max-width: 900px;
   margin: 80px auto;
@@ -73,7 +73,7 @@
 
 .button {
   padding: 12px 20px;
-  background-color: #008d41;
+  background-color: #7e945b;
   color: white;
   border: none;
   border-radius: 25px;
@@ -86,7 +86,10 @@
 }
 
 .button:hover {
-  background-color: #006633;
+  background-color: #ccd5ae; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  color: black;
+  font-weight: bold;
 }
 
 .successMessage {
@@ -100,6 +103,19 @@
   text-align: center;
   margin-top: 10px;
 }
+
+.asterisk {
+  color: red;
+  margin-left: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 
 @media (max-width: 768px) {
   .formRow {

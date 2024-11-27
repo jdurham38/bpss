@@ -1,5 +1,5 @@
 .redirectButton {
-  background-color: #008d41; /* Green background */
+  background-color: #7e945b; /* Green background */
   color: #fff; /* White text color */
   border: none; /* Remove default borders */
   padding: 20px 40px; /* Increase padding to make the button larger */
@@ -14,8 +14,10 @@
 }
 
 .redirectButton:hover {
-  background-color: #006b31; /* Darker green on hover */
+  background-color: #ccd5ae; /* Darker green on hover */
   transform: scale(1.05); /* Slightly enlarge the button on hover */
+  color: black;
+  font-weight: bold;
 }
 
 .redirectButton:active {

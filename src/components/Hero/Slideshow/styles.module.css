@@ -1,21 +1,24 @@
 .carouselContainer {
     width: 100%; /* Ensure the container takes full width */
     max-width: 500px; /* Set a maximum width for larger screens */
-    height: 400px; /* Set a fixed height for the carousel */
+    min-width: 300px; /* Set a maximum width for larger screens */
+    min-height: 385px; /* Set a fixed height for the carousel */
+    max-height: 385px; /* Set a fixed height for the carousel */
     margin: 0 auto; /* Center the carousel horizontally */
     overflow: hidden; /* Ensure no content spills out */
     border-radius: 15px; /* Adds rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
     background-color: #fff; /* Ensure the background is white */
-    border: 3px solid #008d41; /* Add a green border */
   }
   
   .carouselImage {
     width: 100%; /* Ensure the image takes full width of the container */
-    height: 100%; /* Ensure the image takes full height of the container */
+    min-height: 385px; /* Set a fixed height for the carousel */
     object-fit: cover; /* Maintain aspect ratio and ensure the image fills the entire container */
     display: block; /* Make sure there are no gaps */
     transition: none; /* Disable hover transitions for now to prevent resizing during image change */
+    border-radius: 15px; /* Adds rounded corners */
+
   }
   
   .carouselContainer:hover {

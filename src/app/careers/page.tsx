@@ -120,7 +120,7 @@ const CareersPage: React.FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <div className={styles.background}>
       <p className={styles.coreValues}>
         At Big Pop&#39;s, we embody our Core Values of Community, Quality, Respect, Authenticity, and Fun in everything we do, bringing our shared commitment and passion to every experience.
       </p>

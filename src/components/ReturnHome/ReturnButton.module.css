@@ -1,5 +1,5 @@
 .returnButton {
-    background-color: #008d41; /* Green background */
+    background-color: #7e945b; /* Green background */
     color: #fff; /* White text color */
     padding: 12px 24px; /* Adjust padding for better appearance */
     border: none; /* Remove default borders */
@@ -15,8 +15,10 @@
   }
   
   .returnButton:hover {
-    background-color: #006b31; /* Darker green on hover */
+    background-color: #ccd5ae; /* Darker green on hover */
     transform: scale(1.05); /* Slightly enlarge the button on hover */
+    color: black;
+    font-weight: bold;
   }
   
   .returnButton:active {

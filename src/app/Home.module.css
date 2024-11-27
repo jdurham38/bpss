@@ -1,37 +1,49 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .centeredButtons {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Space between the buttons */
-    margin-bottom: 40px; /* Add spacing below the buttons */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 40px;
+  background-color: #faf5e6;
+}
+
+.centeredButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between the buttons */
+  margin-bottom: 40px; /* Add spacing below the buttons */
+}
+
+.descriptionSlideshow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Set a max width for this section */
+  width: 100%;
+  margin-bottom: 40px; /* Add space below this section */
+  gap: 20px; /* Add space between the description and slideshow */
+}
+
+/* For mobile devices, set flex-direction to column */
+@media (max-width: 1000px) {
   .descriptionSlideshow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px; /* Set a max width for this section */
-    width: 100%;
-    margin-bottom: 40px;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align the items */
+    gap: 20px; /* Maintain spacing between stacked items */
   }
 
-  /* For mobile devices, set flex-direction to column */
-@media (max-width: 768px) {
-  .descriptionSlideshow {
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the start of the column */
+  .container {
+    gap: 20px; /* Reduce spacing between sections on smaller screens */
+  }
+
+  .centeredButtons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Reduce gap between buttons */
   }
 }
-  
-  .contactSection {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
+
+.contactSection {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
