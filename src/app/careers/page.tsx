@@ -188,7 +188,6 @@ const CareersPage: React.FC = () => {
                 </button>
               )}
               <p className={styles.text}><strong>Location:</strong> {job.location}</p>
-              <p className={styles.text}><strong>Date Posted:</strong> {new Date(job.created_at).toLocaleDateString()}</p>
               <button className={styles.applyButton} onClick={() => handleApplyClick(job)}>
                 Apply
               </button>
