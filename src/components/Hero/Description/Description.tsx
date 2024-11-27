@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './Description.module.css'; // Import the CSS module
 import RedirectButton from '@/components/OrderButton/page';
-import logo from '../../../../public/favicon.png';
+import logo from '../../../../public/images/logo.png';
 
 const Description: React.FC = () => {
   return (
