@@ -105,8 +105,7 @@ const ApplyForm: React.FC<ApplyFormProps> = ({ job, onClose }) => {
         <button className={styles.closeButton} onClick={onClose}>X</button>
         <h2>Apply for {job.job_title}</h2>
         <p><strong>Location:</strong> {job.location}</p>
-        <p><strong>Date Posted:</strong> {new Date(job.created_at).toLocaleDateString()}</p>
-
+    
         <form ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data">
           <input type="hidden" name="job_title" value={job.job_title} />
           <input type="hidden" name="job_location" value={job.location} />
