@@ -7,30 +7,29 @@ export default function Contact() {
     name: '',
     email: '',
     message: '',
-    subject: 'General Inquiry' // Default value for the subject
+    subject: 'General Inquiry' 
   });
   const [statusMessage, setStatusMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
   const [emailError, setEmailError] = useState('');
   const [messageError, setMessageError] = useState('');
-  const [isConfirmed, setIsConfirmed] = useState(false); // State for checkbox
-  const [isFormValid, setIsFormValid] = useState(false); // Tracks form validity
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     const updatedFormData = { ...formData, [name]: value };
     setFormData(updatedFormData);
   
-    // Validate and check form validity
     if (name === 'email') validateEmail(value);
     checkFormValidity(updatedFormData, isConfirmed);
   };
   
   
   const handleCheckboxChange = () => {
-    const updatedConfirmed = !isConfirmed; // Toggle checkbox state
+    const updatedConfirmed = !isConfirmed;
     setIsConfirmed(updatedConfirmed);
-    checkFormValidity(formData, updatedConfirmed); // Recheck validity
+    checkFormValidity(formData, updatedConfirmed); 
   };
   
   const validateEmail = (email: string): boolean => {
@@ -46,15 +45,15 @@ export default function Contact() {
   };
 
 const checkFormValidity = (data: typeof formData, confirmed: boolean) => {
-  const isEmailValid = validateEmail(data.email); // Validate email here
-  const isMessageValid = data.message.trim().length <= 500; // Check message length
+  const isEmailValid = validateEmail(data.email);
+  const isMessageValid = data.message.trim().length <= 500;
 
   const isFormComplete =
     data.name.trim() !== '' &&
     data.email.trim() !== '' &&
-    isEmailValid && // Use immediate validation result
+    isEmailValid && 
     data.message.trim() !== '' &&
-    isMessageValid && // Ensure message is valid
+    isMessageValid && 
     confirmed;
 
   setIsFormValid(isFormComplete);

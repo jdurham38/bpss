@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import styles from './CareersButton.module.css'; // Import the CSS module
+import styles from './CareersButton.module.css'; 
 
 const CareersButton: React.FC = () => {
   return (

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import styles from './ReturnButton.module.css'; // Import custom CSS for styling
+import styles from './ReturnButton.module.css';
 
 const ReturnButton: React.FC = () => {
   return (

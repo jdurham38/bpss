@@ -7,39 +7,38 @@
 }
 
 .container > * {
-  margin: 20px 0; /* 20px margin top and bottom for all direct children */
+  margin: 20px 0; 
 }
 
 .centeredButtons {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Space between the buttons */
+  gap: 20px; 
 }
 
 .descriptionSlideshow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px; /* Set a max width for this section */
+  max-width: 1200px;
   width: 100%;
-  gap: 20px; /* Add space between the description and slideshow */
+  gap: 20px; 
 }
 
-/* For mobile devices, set flex-direction to column */
 @media (max-width: 1000px) {
   .descriptionSlideshow {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center align the items */
-    gap: 20px; /* Maintain spacing between stacked items */
+    flex-direction: column;
+    align-items: center; 
+    gap: 20px; 
   }
 
   .container > * {
-    margin: 20px 0; /* Maintain the same 20px gap on smaller screens */
+    margin: 20px 0; 
   }
 
   .centeredButtons {
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 10px; /* Reduce gap between buttons */
+    flex-direction: column;
+    gap: 10px;
   }
 }
 

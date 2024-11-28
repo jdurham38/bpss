@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './RedirectButton.module.css'; // Import CSS module
+import styles from './RedirectButton.module.css'; 
 
 interface RedirectButtonProps {
   url: string;

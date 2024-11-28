@@ -1,4 +1,3 @@
-/* Main container */
 .container {
     display: flex;
     justify-content: center;
@@ -7,7 +6,6 @@
     background-color: #f7f7f7;
   }
   
-  /* Login box */
   .loginBox {
     background-color: #fff;
     padding: 40px;
@@ -18,20 +16,17 @@
     text-align: center;
   }
   
-  /* Heading */
   .heading {
     font-size: 2rem;
     color: #333;
     margin-bottom: 20px;
   }
   
-  /* Form group (label and input) */
   .formGroup {
     margin-bottom: 20px;
     text-align: left;
   }
   
-  /* Label styling */
   .formGroup label {
     display: block;
     margin-bottom: 8px;
@@ -39,7 +34,6 @@
     color: #333;
   }
   
-  /* Input field styling */
   .inputField {
     width: 100%;
     padding: 12px;
@@ -48,15 +42,12 @@
     font-size: 1rem;
     background-color: #f9f9f9;
   }
-  
-  /* Error message */
-  .errorMessage {
+    .errorMessage {
     color: red;
     margin-top: 10px;
     font-size: 0.9rem;
   }
   
-  /* Submit button */
   .submitButton {
     width: 100%;
     padding: 12px;

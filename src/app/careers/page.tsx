@@ -9,7 +9,7 @@ interface JobPosting {
   id: number;
   num_applicants: number;
   job_title: string;
-  description: string; // This contains rich text HTML from ReactQuill
+  description: string; 
   location: string;
   created_at: string;
 }
@@ -30,14 +30,13 @@ const CareersPage: React.FC = () => {
 
   useEffect(() => {
     if (showDescriptionModal) {
-      // Prevent background scrolling
       document.body.style.overflow = 'hidden';
     } else {
-      // Re-enable background scrolling
+
       document.body.style.overflow = 'auto';
     }
   
-    // Clean up when the component unmounts
+
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -55,14 +54,13 @@ const CareersPage: React.FC = () => {
       } catch (err: any) {
         setError(err.message || 'Unknown error occurred');
       } finally {
-        setLoading(false); // Stop loading after fetch completes
+        setLoading(false); 
       }
     };
 
     fetchJobPostings();
   }, []);
 
-  // Filtering logic based on location and date
   const handleFilterChange = () => {
     let filteredJobs = [...jobPostings];
 
@@ -90,15 +88,15 @@ const CareersPage: React.FC = () => {
     }
 
     setFilteredJobPostings(filteredJobs);
-    setCurrentPage(1); // Reset pagination to first page
+    setCurrentPage(1); 
   };
 
   const handleApplyClick = (job: JobPosting) => {
-    setSelectedJob(job); // Set the selected job to display in the apply form
+    setSelectedJob(job); 
   };
 
   const handleCloseForm = () => {
-    setSelectedJob(null); // Close the overlay form
+    setSelectedJob(null);
   };
 
   const handleReadMoreClick = (description: string) => {
@@ -112,7 +110,6 @@ const CareersPage: React.FC = () => {
   };
 
 
-  // Pagination logic
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
   const currentJobs = filteredJobPostings.slice(indexOfFirstJob, indexOfLastJob);
@@ -150,22 +147,18 @@ const CareersPage: React.FC = () => {
         </button>
       </div>
   
-      {/* Show loading animation while fetching data */}
       {loading && <div className={styles.loader}>Loading...</div>}
   
-      {/* Job Listings in a grid */}
       {!loading && filteredJobPostings.length > 0 ? (
         <div className={styles.gridContainer}>
           {currentJobs.map((job) => (
             <div key={job.id} className={styles.jobBox}>
               <h3>{job.job_title}</h3>
-              {/* Job description with conditional "Read More" */}
               <div className={styles.jobDescription}>
                 <div
                   dangerouslySetInnerHTML={{ __html: job.description }}
                 />
               </div>
-              {/* Check if the description is longer than a certain length */}
               {job.description.length > 200 && (
                 <button
                   className={styles.readMoreButton}
@@ -185,7 +178,6 @@ const CareersPage: React.FC = () => {
         !loading && <p className={styles.text}>No open job postings available.</p>
       )}
   
-      {/* Modal Overlay for Full Description */}
       {showDescriptionModal && (
         <div className={styles.modalOverlay} onClick={handleCloseModal}>
           <div
@@ -205,7 +197,6 @@ const CareersPage: React.FC = () => {
   
       {selectedJob && <ApplyForm job={selectedJob} onClose={handleCloseForm} />}
   
-      {/* Pagination */}
       {filteredJobPostings.length > jobsPerPage && (
         <div className={styles.paginationContainer}>
           {Array.from(

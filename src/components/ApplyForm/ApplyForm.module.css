@@ -1,4 +1,3 @@
-/* Full-screen overlay */
 .overlay {
   position: fixed;
   top: 0;
@@ -10,22 +9,20 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  overflow: hidden; /* Prevent scrolling within the overlay */
-  overscroll-behavior: none; /* Prevent elastic scrolling on mobile */
+  overflow: hidden; 
+  overscroll-behavior: none; 
 }
 
-/* Container for the form */
 .formContainer {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   width: 500px;
   max-height: 90vh;
-  overflow-y: auto; /* Allow form content to scroll */
+  overflow-y: auto;
   position: relative;
 }
 
-  /* Close button */
   .closeButton {
     position: absolute;
     top: 10px;
@@ -37,7 +34,6 @@
     color:red;
   }
   
-  /* Form Group Styling */
   .formGroup {
     margin-bottom: 15px;
   }
@@ -54,7 +50,6 @@
     border-radius: 4px;
   }
   
-  /* Submit Button Styling */
   .submitButton {
     background-color: #7e945b;
     color: white;
@@ -66,12 +61,11 @@
   }
   
   .submitButton:hover {
-    background-color: #ccd5ae; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    background-color: #ccd5ae; 
+    transform: scale(1.05); 
     color: black;
     font-weight: bold;
   }
-  /* Success and Error Messages */
   .successMessage {
     color: green;
     text-align: center;
@@ -84,7 +78,3 @@
     margin-top: 10px;
   }
   
-  /* Disable body scroll when overlay is active */
-body.no-scroll {
-  overflow: hidden;
-}

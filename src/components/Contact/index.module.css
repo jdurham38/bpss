@@ -86,8 +86,8 @@
 }
 
 .button:hover {
-  background-color: #ccd5ae; /* Darker green on hover */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  background-color: #ccd5ae; 
+  transform: scale(1.05); 
   color: black;
   font-weight: bold;
 }

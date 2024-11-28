@@ -18,17 +18,17 @@ const ApplyForm: React.FC<ApplyFormProps> = ({ job, onClose }) => {
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
   
-  const formRef = useRef<HTMLFormElement | null>(null); // Use ref for the form
+  const formRef = useRef<HTMLFormElement | null>(null); 
 
   useEffect(() => {
-    const scrollPosition = window.scrollY; // Capture current scroll position
+    const scrollPosition = window.scrollY;
     document.body.classList.add('no-scroll');
-    document.body.style.top = `-${scrollPosition}px`; // Freeze scroll position
+    document.body.style.top = `-${scrollPosition}px`; 
   
     return () => {
       document.body.classList.remove('no-scroll');
-      document.body.style.top = ''; // Remove top style
-      window.scrollTo(0, scrollPosition); // Restore scroll position
+      document.body.style.top = '';
+      window.scrollTo(0, scrollPosition); 
     };
   }, []);
   
@@ -61,7 +61,7 @@ const ApplyForm: React.FC<ApplyFormProps> = ({ job, onClose }) => {
     e.preventDefault();
 
     const formElement = formRef.current;
-    if (!formElement) return; // Ensure the form exists
+    if (!formElement) return;
 
     const fileInput = formElement.querySelector('input[type="file"]') as HTMLInputElement;
     const file = fileInput?.files?.[0] || null;
@@ -74,14 +74,12 @@ const ApplyForm: React.FC<ApplyFormProps> = ({ job, onClose }) => {
     // Strip HTML tags from the job description
     const cleanDescription = stripHtmlTags(job.description);
 
-    // Manually set the cleaned job description to a hidden input field in the form
     const descriptionInput = document.createElement('input');
     descriptionInput.setAttribute('type', 'hidden');
     descriptionInput.setAttribute('name', 'job_description_clean');
     descriptionInput.setAttribute('value', cleanDescription);
-    formElement.appendChild(descriptionInput); // Append it to the form
+    formElement.appendChild(descriptionInput); 
 
-    // Send the form using emailjs.sendForm
     emailjs.sendForm(
       process.env.NEXT_PUBLIC_SERVICE_ID || '',
       process.env.NEXT_PUBLIC_JOB_TEMPLATE_ID || '',
@@ -92,10 +90,8 @@ const ApplyForm: React.FC<ApplyFormProps> = ({ job, onClose }) => {
         setIsSuccess(true);
         setStatusMessage('Application submitted successfully!');
 
-        // Clear form fields using ref
         formElement.reset();
 
-        // Automatically close the form after 5 seconds
         setTimeout(onClose, 5000);
       },
       (error) => {

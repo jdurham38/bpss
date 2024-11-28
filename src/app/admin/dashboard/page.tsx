@@ -1,14 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabaseClient'; // Import Supabase client
-import Link from 'next/link'; // Import Next.js Link component
+import { supabase } from '@/lib/supabaseClient'; 
+import Link from 'next/link'; 
 import dynamic from 'next/dynamic';
 import styles from './AdminDashboard.module.css';
 
-// Dynamically import ReactQuill for client-side rendering
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import 'react-quill/dist/quill.snow.css'; 
 
 export default function AdminDashboard() {
   const [user, setUser] = useState<any>(null);
@@ -26,23 +25,22 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     const checkUser = async () => {
-      setLoadingUser(true); // Start loading for user check
+      setLoadingUser(true); 
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         setUser(null);
       } else {
         setUser(user);
-        fetchJobPostings(); // Fetch job postings when the user is authenticated
+        fetchJobPostings();
       }
-      setLoadingUser(false); // Stop loading after check
+      setLoadingUser(false); 
     };
 
     checkUser();
   }, []);
 
-  // Fetch job postings
   const fetchJobPostings = async () => {
-    setLoadingJobs(true); // Start loading for job postings
+    setLoadingJobs(true); 
     const { data: jobs, error } = await supabase.from('jobapplications').select('*');
     
     if (error) {
@@ -53,7 +51,7 @@ export default function AdminDashboard() {
       setOpenJobs(openJobs);
       setClosedJobs(closedJobs);
     }
-    setLoadingJobs(false); // Stop loading after fetching jobs
+    setLoadingJobs(false); 
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -85,7 +83,7 @@ export default function AdminDashboard() {
           location: location,
           description: description,
           num_applicants: 0,
-          is_open: true  // Default is_open to true for new job postings
+          is_open: true 
         }
       ]);
 
@@ -119,7 +117,6 @@ export default function AdminDashboard() {
     setDescription(job.description);
   };
 
-  // Handle closing a job (set is_open to false)
   const handleCloseJob = async (jobId: number) => {
     const { data, error } = await supabase
       .from('jobapplications')
@@ -134,7 +131,6 @@ export default function AdminDashboard() {
     }
   };
 
-  // Handle opening a closed job (set is_open to true)
   const handleOpenJob = async (jobId: number) => {
     const { data, error } = await supabase
       .from('jobapplications')

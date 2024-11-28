@@ -1,35 +1,34 @@
 .careersContainer {
-    background-color: #faedcd; /* Light background for the container */
-    border-radius: 15px; /* Rounded corners */
-    padding: 30px; /* Padding inside the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border: 2px solid #7e945b; /* Green border */
-    max-width: 600px; /* Limit the width of the container */
-    margin: 20px auto; /* Center the container */
-    text-align: center; /* Center-align the text and button */
-  }
-  
-  .careersButton {
-    background-color: #7e945b; /* Green background */
-    color: #fff; /* White text color */
-    border: none; /* Remove default borders */
-    padding: 10px 20px; /* Padding inside the button */
-    border-radius: 25px; /* Rounded corners for the button */
-    font-size: 16px; /* Increase font size */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
-    display: inline-block; /* Ensure it behaves like a button */
-  }
-  
-  .careersButton:hover {
-    background-color: #ccd5ae; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
-    color: black;
-    font-weight: bold;
-  }
-  
-  .careersButton:active {
-    background-color: #005528; /* Even darker green on click */
-    transform: scale(0.95); /* Slightly shrink on click for feedback */
-  }
-  
+  background-color: #faedcd;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #7e945b;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.careersButton {
+  background-color: #7e945b;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.careersButton:hover {
+  background-color: #ccd5ae;
+  transform: scale(1.05);
+  color: black;
+  font-weight: bold;
+}
+
+.careersButton:active {
+  background-color: #005528;
+  transform: scale(0.95);
+}

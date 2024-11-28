@@ -6,7 +6,7 @@ import RedirectButton from '@/components/OrderButton/page';
 import Contact from '@/components/Contact/contact';
 import Description from '@/components/Hero/Description/Description';
 import Slideshow from '@/components/Hero/Slideshow/Slideshow';
-import styles from './Home.module.css'; // Import CSS module for styling
+import styles from './Home.module.css'; 
 
 
 

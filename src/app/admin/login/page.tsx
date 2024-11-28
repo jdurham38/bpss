@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { supabase } from '@/lib/supabaseClient'; // Import your Supabase client
+import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import styles from './AdminLogin.module.css'; // Import the CSS module
+import styles from './AdminLogin.module.css'; 
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ export default function AdminLogin() {
     if (error) {
       setError('Invalid email or password');
     } else {
-      router.push('/admin/dashboard'); // Redirect to the admin dashboard
+      router.push('/admin/dashboard'); 
     }
   };
 
